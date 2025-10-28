@@ -16,7 +16,7 @@ function errorHandler(err, req, res, next) {
             err: err,
             data:{}  // beacuse this is an exception so no data is going to be  provided
      })
-   
+    
 
 
 }

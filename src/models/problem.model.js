@@ -18,16 +18,19 @@ const ProblemSchema = new mongoose.Schema({
     },
     testCases: {
         type: [{
-            input: { type: Strin g, required: true },
+            input: { type: String, required: true },
             output: { type: String, required: true }        
         }],
         validate: {
-            validator: function(v) {
+            validator: function (v) {
                 return v.length > 0;
             },
-            message: 'At least one testcase is required'        
-
-    }
+            message: 'At least one testcase is required' 
+        },
+            editorial: {
+                type: String,
+        }
+    
 
     }
 });

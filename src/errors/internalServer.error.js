@@ -7,4 +7,4 @@ class InternalServerError extends BaseError {
     
 }
 
-module.exports = InternalServerError;
+module.exports = InternalServerError; 

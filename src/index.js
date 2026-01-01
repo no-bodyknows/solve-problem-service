@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 const apirouter = require('./routes/index');
 const errorHandler = require('./utils/errorhandler.js');
+const connectToDB = require('./config/db.config.js');
 
 const app = express();
 
@@ -25,6 +26,11 @@ app.get('/ping', (req, res) => {
 
 app.use(errorHandler);
 
-app.listen(PORT, () => {
+app.listen(PORT, async() => {
     console.log(`Server is running on port ${PORT}`);
+    await connectToDB();
+    console.log('sucessfylly Connected to the database');
 })
+
+
+

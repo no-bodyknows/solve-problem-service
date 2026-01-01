@@ -5,7 +5,7 @@ const { PORT } = require('./config/server.config');
 const bodyParser = require('body-parser');
 
 const apirouter = require('./routes/index');
-const errorHandler = require('./utils/errorHandler');
+const errorHandler = require('./utils/errorhandler.js');
 const connectToDB = require('./config/db.config.js');
 
 const app = express();
@@ -31,5 +31,6 @@ app.listen(PORT, async() => {
     await connectToDB();
     console.log('sucessfylly Connected to the database');
 })
+
 
 

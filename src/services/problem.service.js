@@ -7,7 +7,7 @@ class ProblemService {
     }
     async createProblem(ProblemData) {
         try {
-              throw new Error("test error handling");
+             
             // 1. sanitize the markdown content
             ProblemData.description = markdownsanitizer(ProblemData.description);
 
@@ -24,5 +24,20 @@ class ProblemService {
         }
 
     }
+    async getAllProblems() {
+            console.log("fetching all problems from service layer");
+        const problems = await this.ProblemRepository.getAllProblems();
+        console.log("problems fetched in service layer", problems);
+            return problems;
+        
+        
+    }
+    async getProblemById(ProblemId) {
+        console.log("fetching problem by id from service layer");
+        const problem = await this.ProblemRepository.getProblemById(ProblemId);
+        console.log("problem fetched in service layer", problem);
+        return problem;
+    }
+
 }
 module.exports = ProblemService;

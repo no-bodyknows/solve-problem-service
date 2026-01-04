@@ -1,3 +1,4 @@
+const  NotFoundError  = require("../errors/notfound.error");
 const { markdownsanitizer } = require("../utils");
 class ProblemService {
     constructor(ProblemRepository) {
@@ -33,9 +34,21 @@ class ProblemService {
         
     }
     async getProblemById(ProblemId) {
-        console.log("fetching problem by id from service layer");
+        
         const problem = await this.ProblemRepository.getProblemById(ProblemId);
-        console.log("problem fetched in service layer", problem);
+        
+        return problem;
+    }
+
+    async deleteProblem(ProblemId) {
+        
+        const problem = await this.ProblemRepository.getProblemById(ProblemId);
+        
+        if (!problem) {
+           
+           throw new NotFoundError('Problem', ProblemId);
+        }
+        await this.ProblemRepository.deleteProblem(ProblemId);
         return problem;
     }
 

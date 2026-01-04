@@ -41,6 +41,14 @@ class ProblemRepository {
             throw error;
         }
     }
-
+    async deleteProblem(ProblemId) {
+        try {
+            await Problem.findByIdAndDelete(ProblemId);
+        }
+        catch (error) {
+            throw error;
+        }
+    }   
+    
 }
 module.exports = ProblemRepository;

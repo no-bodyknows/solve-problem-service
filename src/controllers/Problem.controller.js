@@ -87,14 +87,23 @@ async function getProblems(req, res) {
    
 }
 
-function deleteProblem(req, res) {
-    // return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-    //     message: 'This route is not yet implemented'
-    // })
+async function deleteProblem(req, res ,next) {
+    
     try {
-        throw new  NotImplemented("deleteProblem");
+        console.log("deleting problem from controller layer");
+        const Problemid = req.params.id;
+        // logic to delete the problem
+        const problem = await problemService.deleteProblem(Problemid);
+        
+        return res.status(StatusCodes.OK).json({
+            success: true,
+            message: `Problem with id ${Problemid} deleted successfully`,
+            error: {},
+            data:problem
+        });
     }
     catch (error) {
+        console.log("inside catch block");
         next(error);
     }
 
